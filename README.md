@@ -2,6 +2,12 @@
 
 A modern tarot reading web application built with Next.js 14, React, TypeScript, and Google Vertex AI Gemini Flash-Lite.
 
+## Live Demo
+
+🔮 **[https://taroai.vercel.app](https://taroai.vercel.app)**
+
+Try the live demo and discover insights into your past, present, and future!
+
 ## Features
 
 ✨ **Modern Tech Stack**
