@@ -4,7 +4,7 @@ A modern tarot reading web application built with Next.js 14, React, TypeScript,
 
 ## Live Demo
 
-🔮 **[https://taroai.vercel.app](https://taroai.vercel.app)**
+🔮 **[https://taro-ai-ten.vercel.app](https://taro-ai-ten.vercel.app)**
 
 Try the live demo and discover insights into your past, present, and future!
 
