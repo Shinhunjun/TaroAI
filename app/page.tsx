@@ -173,18 +173,31 @@ export default function Home() {
         }}
       />
       {/* Main Container Wrapper */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 bg-gradient-to-b from-gray-900/80 via-gray-800/60 to-gray-900/80 rounded-3xl border border-gray-700/50 shadow-2xl backdrop-blur-sm">
-        <div className="max-w-5xl mx-auto space-y-12">
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:px-8 sm:py-12 lg:px-12 bg-gradient-to-b from-gray-900/80 via-gray-800/60 to-gray-900/80 rounded-2xl sm:rounded-3xl border border-gray-700/50 shadow-2xl backdrop-blur-sm">
+        <div className="max-w-5xl mx-auto space-y-8 sm:space-y-12">
           {/* Header */}
           <div className="text-center">
-          <h1 className="text-6xl font-serif font-bold mb-6 bg-gradient-to-r from-accent via-purple-400 to-highlight bg-clip-text text-transparent">
-            Where is Your Journey Heading?
-          </h1>
-          <p className="text-gray-300 text-xl font-light tracking-wide">
-            Discover insights into your <span className="text-highlight font-semibold">past</span>,{' '}
-            <span className="text-accent font-semibold">present</span>, and{' '}
-            <span className="text-purple-400 font-semibold">future</span>
-          </p>
+            {/* Desktop Header */}
+            <h1 className="hidden md:block text-5xl lg:text-6xl font-serif font-bold mb-6 bg-gradient-to-r from-accent via-purple-400 to-highlight bg-clip-text text-transparent">
+              Discover Your Path Through Tarot
+            </h1>
+
+            {/* Mobile Header */}
+            <h1 className="md:hidden text-4xl font-serif font-bold mb-4 bg-gradient-to-r from-accent via-purple-400 to-highlight bg-clip-text text-transparent">
+              Your Tarot Reading
+            </h1>
+
+            {/* Desktop Subtitle */}
+            <p className="hidden md:block text-gray-300 text-xl font-light tracking-wide">
+              Discover insights into your <span className="text-highlight font-semibold">past</span>,{' '}
+              <span className="text-accent font-semibold">present</span>, and{' '}
+              <span className="text-purple-400 font-semibold">future</span>
+            </p>
+
+            {/* Mobile Subtitle */}
+            <p className="md:hidden text-gray-300 text-base font-light">
+              Past · Present · Future
+            </p>
           </div>
 
           {/* Question Input */}
@@ -200,12 +213,12 @@ export default function Home() {
             <button
               onClick={handleDrawAllCards}
               disabled={!question || drawingCards}
-              className="px-12 py-5 bg-gradient-to-r from-accent to-purple-600 text-white text-xl font-semibold rounded-xl hover:from-purple-700 hover:to-accent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl hover:shadow-2xl hover:scale-105 transform"
+              className="px-8 py-4 sm:px-12 sm:py-5 bg-gradient-to-r from-accent to-purple-600 text-white text-lg sm:text-xl font-semibold rounded-xl hover:from-purple-700 hover:to-accent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl hover:shadow-2xl hover:scale-105 transform"
             >
               {drawingCards ? 'Drawing Cards...' : 'Draw 3 Tarot Cards'}
             </button>
             {!question && (
-              <p className="text-highlight mt-4 font-medium">
+              <p className="text-highlight mt-3 sm:mt-4 font-medium text-sm sm:text-base">
                 Please enter a question first
               </p>
             )}
@@ -216,60 +229,63 @@ export default function Home() {
           <AnimatePresence>
             {allCardsDrawn && (
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
                 variants={cardContainerVariants}
                 initial="hidden"
                 animate="visible"
                 style={{ perspective: 1000 }}
               >
+                {/* Past Card */}
                 <motion.div
-                  className="flex flex-col items-center p-8 bg-gray-800/60 rounded-xl border-2 border-highlight/40 shadow-lg hover:shadow-xl transition-shadow"
+                  className="flex flex-col items-center p-4 sm:p-6 md:p-8 bg-gray-800/60 rounded-xl border-2 border-highlight/40 shadow-lg hover:shadow-xl transition-shadow"
                   variants={cardVariants}
                   style={{ transformStyle: 'preserve-3d' }}
                 >
-                  <h3 className="text-2xl font-serif font-bold text-highlight mb-6">Past</h3>
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-highlight mb-4 sm:mb-6">Past</h3>
                   <img
                     src={`/cards/${cards.past?.img}`}
                     alt={cards.past?.name || 'Past card'}
-                    className={`w-64 md:w-72 lg:w-80 h-auto rounded-lg shadow-lg mb-4 transition-transform ${cards.past?.reversed ? 'rotate-180' : ''}`}
+                    className={`w-48 sm:w-56 md:w-64 lg:w-72 h-auto rounded-lg shadow-lg mb-3 sm:mb-4 transition-transform ${cards.past?.reversed ? 'rotate-180' : ''}`}
                   />
-                  <p className="text-lg font-semibold text-foreground">
+                  <p className="text-base sm:text-lg font-semibold text-foreground text-center">
                     {cards.past?.name}
-                    {cards.past?.reversed && <span className="text-sm text-gray-400 ml-2">(Reversed)</span>}
+                    {cards.past?.reversed && <span className="block sm:inline text-sm text-gray-400 sm:ml-2">(Reversed)</span>}
                   </p>
                 </motion.div>
 
+                {/* Present Card */}
                 <motion.div
-                  className="flex flex-col items-center p-8 bg-gray-800/60 rounded-xl border-2 border-accent/40 shadow-lg hover:shadow-xl transition-shadow"
+                  className="flex flex-col items-center p-4 sm:p-6 md:p-8 bg-gray-800/60 rounded-xl border-2 border-accent/40 shadow-lg hover:shadow-xl transition-shadow"
                   variants={cardVariants}
                   style={{ transformStyle: 'preserve-3d' }}
                 >
-                  <h3 className="text-2xl font-serif font-bold text-accent mb-6">Present</h3>
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-accent mb-4 sm:mb-6">Present</h3>
                   <img
                     src={`/cards/${cards.present?.img}`}
                     alt={cards.present?.name || 'Present card'}
-                    className={`w-64 md:w-72 lg:w-80 h-auto rounded-lg shadow-lg mb-4 transition-transform ${cards.present?.reversed ? 'rotate-180' : ''}`}
+                    className={`w-48 sm:w-56 md:w-64 lg:w-72 h-auto rounded-lg shadow-lg mb-3 sm:mb-4 transition-transform ${cards.present?.reversed ? 'rotate-180' : ''}`}
                   />
-                  <p className="text-lg font-semibold text-foreground">
+                  <p className="text-base sm:text-lg font-semibold text-foreground text-center">
                     {cards.present?.name}
-                    {cards.present?.reversed && <span className="text-sm text-gray-400 ml-2">(Reversed)</span>}
+                    {cards.present?.reversed && <span className="block sm:inline text-sm text-gray-400 sm:ml-2">(Reversed)</span>}
                   </p>
                 </motion.div>
 
+                {/* Future Card */}
                 <motion.div
-                  className="flex flex-col items-center p-8 bg-gray-800/60 rounded-xl border-2 border-purple-400/40 shadow-lg hover:shadow-xl transition-shadow"
+                  className="flex flex-col items-center p-4 sm:p-6 md:p-8 bg-gray-800/60 rounded-xl border-2 border-purple-400/40 shadow-lg hover:shadow-xl transition-shadow"
                   variants={cardVariants}
                   style={{ transformStyle: 'preserve-3d' }}
                 >
-                  <h3 className="text-2xl font-serif font-bold text-purple-400 mb-6">Future</h3>
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-purple-400 mb-4 sm:mb-6">Future</h3>
                   <img
                     src={`/cards/${cards.future?.img}`}
                     alt={cards.future?.name || 'Future card'}
-                    className={`w-64 md:w-72 lg:w-80 h-auto rounded-lg shadow-lg mb-4 transition-transform ${cards.future?.reversed ? 'rotate-180' : ''}`}
+                    className={`w-48 sm:w-56 md:w-64 lg:w-72 h-auto rounded-lg shadow-lg mb-3 sm:mb-4 transition-transform ${cards.future?.reversed ? 'rotate-180' : ''}`}
                   />
-                  <p className="text-lg font-semibold text-foreground">
+                  <p className="text-base sm:text-lg font-semibold text-foreground text-center">
                     {cards.future?.name}
-                    {cards.future?.reversed && <span className="text-sm text-gray-400 ml-2">(Reversed)</span>}
+                    {cards.future?.reversed && <span className="block sm:inline text-sm text-gray-400 sm:ml-2">(Reversed)</span>}
                   </p>
                 </motion.div>
               </motion.div>
@@ -282,7 +298,7 @@ export default function Home() {
               <button
                 onClick={handleInterpret}
                 disabled={interpretationLoading}
-                className="px-10 py-4 bg-accent text-white text-lg font-semibold rounded-xl hover:bg-purple-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl hover:scale-105 transform"
+                className="px-8 py-3 sm:px-10 sm:py-4 bg-accent text-white text-base sm:text-lg font-semibold rounded-xl hover:bg-purple-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl hover:scale-105 transform"
               >
                 {interpretationLoading ? 'Interpreting...' : 'Interpret Tarot Cards'}
               </button>
