@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --primary: #1e1b4b;
+  --accent: #8b5cf6;
+  --highlight: #fbbf24;
+  --border: #334155;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  /* Font is set via Next.js font in layout.tsx - don't override here */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
