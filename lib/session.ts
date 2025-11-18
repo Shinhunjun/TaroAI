@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { SessionData } from '@/types/tarot';
 
-const SESSION_COOKIE_NAME = 'tarot_session';
+const SESSION_COOKIE_NAME = 'tarot_session_v2';
 
 export async function getSession(): Promise<SessionData> {
   const cookieStore = await cookies();
