@@ -178,8 +178,8 @@ export default function Home() {
           {/* Header */}
           <div className="text-center">
             {/* Desktop Header */}
-            <h1 className="hidden md:block text-5xl lg:text-6xl font-serif font-bold mb-6 bg-gradient-to-r from-accent via-purple-400 to-highlight bg-clip-text text-transparent">
-              Discover Your Path Through Tarot
+            <h1 className="hidden md:block text-5xl lg:text-6xl font-serif font-bold mb-6 bg-gradient-to-r from-accent via-purple-400 to-highlight bg-clip-text text-transparent whitespace-nowrap">
+              Discover Your Path
             </h1>
 
             {/* Mobile Header */}
