@@ -96,16 +96,24 @@ export default function Home() {
 
   const handleReset = async () => {
     try {
-      await fetch('/api/session', {
+      const response = await fetch('/api/session', {
         method: 'DELETE',
         credentials: 'same-origin'
       });
+
+      if (!response.ok) {
+        throw new Error('Failed to reset session');
+      }
+
+      // Clear frontend state AFTER successful backend reset
       setQuestion('');
       setCards({ past: null, present: null, future: null });
       setInterpretation(null);
-      window.location.reload();
+
+      toast.success('Session reset! You can ask a new question.');
     } catch (error) {
       console.error('Error resetting:', error);
+      toast.error('Failed to reset session. Please refresh the page.');
     }
   };
 

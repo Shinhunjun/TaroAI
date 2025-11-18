@@ -59,5 +59,17 @@ export async function setSession(session: SessionData): Promise<void> {
 
 export async function clearSession(): Promise<void> {
   const cookieStore = await cookies();
+
+  // Set cookie to expire immediately
+  cookieStore.set(SESSION_COOKIE_NAME, '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 0,  // Expire immediately
+    expires: new Date(0),  // Set to epoch (January 1, 1970)
+    path: '/',
+  });
+
+  // Also call delete for redundancy
   cookieStore.delete(SESSION_COOKIE_NAME);
 }
